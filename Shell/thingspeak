@@ -1,0 +1,29 @@
+#!/bin/bash
+#
+# Rails server thingspeak       
+#
+# chkconfig: 
+# description:  Start up the Rails server thingspeak.
+
+# Source function library.
+
+THINGSPPEAK_HOME="/home/ase/thingspeak"
+RAILS="/usr/local/bin/rails"
+PID_FILE="/var/run/thingspeak.pid"
+
+case $1 in
+	start)
+		cd $THINGSPEAK_HOME
+		$RAILS server -d --pid=$PID_FILE
+		;;
+	stop)
+		kill -KILL $(cat $PID_FILE)
+# or	kill -9 $(cat $PID_FILE)
+		;;
+	restart)
+		cd $THINGSPEAK_HOME
+		kill -KILL $(cat $PID_FILE)
+		$RAILS server -d --pid=$PID_FILE
+		;;
+	esac
+exit 0

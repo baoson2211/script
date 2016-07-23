@@ -1,0 +1,26 @@
+#!/bin/bash
+#
+# tomcat        
+#
+# chkconfig: 
+# description:  Start up the Tomcat servlet engine.
+
+# Source function library.
+
+CATALINA_HOME="/opt/tomcat"
+
+export JAVA_HOME=/usr/lib/jvm/java-6-sun
+
+case $1 in
+	start)
+		sh $CATALINA_HOME/bin/startup.sh
+		;;
+	stop)
+		sh $CATALINA_HOME/bin/shutdown.sh
+		;;
+	restart)
+		sh $CATALINA_HOME/bin/shutdown.sh
+		sh $CATALINA_HOME/bin/startup.sh
+		;;
+	esac
+exit 0

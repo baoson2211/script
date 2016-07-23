@@ -1,0 +1,3 @@
+cat aaaa.txt | awk '$1 == 8 {print $4}' | sed 's/"//g'
+cat aaaa.txt | awk '$1 == 8 {gsub ( "\"","" ) ; for (i=4;i<7;i++) print $i }'
+
